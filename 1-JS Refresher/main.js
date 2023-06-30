@@ -74,3 +74,78 @@ function transformToObjects(numberValue) {
   return solution;
 }
 console.log(transformToObjects([1, 2, 3]));
+
+//----------------------------------------------------------------
+
+const userNameData = ['Max', 'Muller'];
+const userName = userNameData[0];
+const userSecondname = userNameData[1];
+console.log(userName, userSecondname);
+//or
+const [frstName, lstName] = ['Max', 'Muller'];
+console.log(frstName, lstName);
+
+const { name: movieName, year } = {
+  name: 'The Matrix',
+  year: 1999,
+};
+console.log(movieName, year);
+
+//----------------------------------------------------------------
+
+const hobby = ['sports', 'coding', 'eating'];
+const newHobby = ['reading'];
+
+const mergeHobbies = [...hobby, ...newHobby];
+console.log(mergeHobbies);
+
+const furniture = {
+  name: 'table',
+  price: 1000,
+};
+
+const availableFurniture = {
+  ...furniture,
+  available: true,
+};
+
+console.log(availableFurniture);
+
+//----------------------------------------------------------------
+
+for (const forHobyy of hobbies) {
+  console.log(forHobyy);
+}
+
+for (let i = 0; i < hobbies.length; i++) {
+  console.log(hobbies[i] + '.');
+}
+
+if (hobby.length === 3) {
+  console.log(`hobby is equal ${hobby.length}`);
+}
+
+//----------------------------------------------------------------
+function handleTimeout() {
+  console.log('timeout');
+}
+
+setTimeout(handleTimeout, 500);
+
+function greeter(greeting) {
+  greeting();
+}
+
+greeter(() => {
+  console.log('Greetings Sir');
+});
+
+function greeter2() {
+  function greeter3() {
+    console.log('Greetings Sir');
+  }
+  greeter3();
+}
+greeter2();
+
+//----------------------------------------------------------------
