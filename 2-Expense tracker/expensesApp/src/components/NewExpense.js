@@ -2,67 +2,49 @@ import React, { useState } from 'react';
 import './NewExpenseCSS.css';
 
 function NewExpense() {
-  //v1.0
-  //   const [enteredTitle, setEnteredTitle] = useState('');
-  //   const [enteredAmount, setEnteredAmount] = useState('');
-  //   const [enteredDate, setEnteredDate] = useState('');
-  //v2 & v3
-  const [userInput, setUserInput] = useState({
-    enteredTitle: '',
-    enteredAmount: '',
-    enteredDate: '',
-  });
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
 
   const titleChangeHandler = (event) => {
-    //v1
-    // setEnteredTitle(event.target.value);
-
-    //v2
-    //  setUserInput({
-    //    ...userInput,
-    //    enteredTitle: event.target.value,
-    //  });
-
-    //v3:
-    setUserInput((previousState) => {
-      return {
-        ...previousState,
-        enteredTitle: event.target.value,
-      };
-    });
+    setEnteredTitle(event.target.value);
   };
 
   const amountChangeHandler = (event) => {
-    setUserInput((previousState) => {
-      return {
-        ...previousState,
-        enteredAmount: event.target.value,
-      };
-    });
+    setEnteredAmount(event.target.value);
   };
+
   const dateChangeHandler = (event) => {
-    setUserInput((previousState) => {
-      return {
-        ...previousState,
-        enteredDate: event.target.value,
-      };
-    });
+    setEnteredDate(event.target.value);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const data = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: enteredDate,
+    };
+    console.log(data);
+    setEnteredTitle('');
+    setEnteredAmount('');
+    setEnteredDate('');
   };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className='wrapper'>
         <div className='card'>
           <label>Title</label>
-          <input type='text' onChange={titleChangeHandler} />
+          <input type='text' value={enteredTitle} onChange={titleChangeHandler} />
         </div>
         <div className='card'>
           <label>Amount</label>
-          <input type='number' onChange={amountChangeHandler} />
+          <input type='number' value={enteredAmount} onChange={amountChangeHandler} />
         </div>
         <div className='card'>
           <label>Date</label>
-          <input type='date' onChange={dateChangeHandler} />
+          <input type='date' value={enteredDate} onChange={dateChangeHandler} />
         </div>
         <button>Add</button>
       </div>
@@ -70,3 +52,36 @@ function NewExpense() {
   );
 }
 export default NewExpense;
+
+// const [userInput, setUserInput] = useState(
+//   {
+//   enteredTitle: '',
+//   enteredAmount: '',
+//   enteredDate: '',
+// });
+
+// const titleChangeHandler = (event) => {
+//   setUserInput((previousState) => {
+//     return {
+//       ...previousState,
+//       enteredTitle: event.target.value,
+//     };
+//   });
+// };
+
+// const amountChangeHandler = (event) => {
+//   setUserInput((previousState) => {
+//     return {
+//       ...previousState,
+//       enteredAmount: event.target.value,
+//     };
+//   });
+// };
+// const dateChangeHandler = (event) => {
+//   setUserInput((previousState) => {
+//     return {
+//       ...previousState,
+//       enteredDate: event.target.value,
+//     };
+//   });
+// };
